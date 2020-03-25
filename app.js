@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 mongoose.connect("mongodb://localhost:27017/todoListDB");
 const itemSchema = {
-  name: String;
+  name: String
 }
 
 const Item = mongoose.model("Item",itemSchema);
