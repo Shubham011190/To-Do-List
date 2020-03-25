@@ -1,18 +1,26 @@
 const express = require('express');
 const ejs = require('ejs');
 const bodyparser = require('body-parser');
-const dateVal = require(__dirname + '/date.js');
 const app = express();
+const mongoose = require('mongoose');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-let items = [];
-let workItems = [];
+// let items = [];
+// let workItems = [];    Using MongoDB instead.
+
+mongoose.connect("mongodb://localhost:27017/todoListDB");
+const itemSchema = {
+  name: String;
+}
+
+const Item = mongoose.model("Item",itemSchema);
+
 
 app.get("/",function(req,res){
   let dayval = dateVal.datesend( );
-  res.render("list",{title:dayval, listItem : items});
+  res.render("list",{title:"Today", listItem : items});
 })
 
 app.post("/", function(req,res){
