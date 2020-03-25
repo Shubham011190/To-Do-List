@@ -19,7 +19,7 @@ const Item = mongoose.model("Item",itemSchema);
 
 
 app.get("/",function(req,res){
-  let dayval = dateVal.datesend( );
+  // let dayval = dateVal.datesend( );
   res.render("list",{title:"Today", listItem : items});
 })
 
