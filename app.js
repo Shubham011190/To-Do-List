@@ -17,6 +17,27 @@ const itemSchema = {
 
 const Item = mongoose.model("Item",itemSchema);
 
+const item1 = new Item{
+  name = "Welcome to To-do List"
+}
+
+const item2 = new Item{
+  name = "Press '+' to add new items"
+}
+
+const item3 = new Item{
+  name = "Press to delete"
+}
+
+const defItems =[item1, item2, item3];
+Item.insertMany(defItems, function(err){
+  if(err){
+    console.log(err);
+  }
+  else {
+    console.log("Default Items added successfully");
+  }
+})
 
 app.get("/",function(req,res){
   // let dayval = dateVal.datesend( );
