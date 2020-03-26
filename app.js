@@ -41,7 +41,10 @@ Item.insertMany(defItems, function(err){
 
 app.get("/",function(req,res){
   // let dayval = dateVal.datesend( );
-  res.render("list",{title:"Today", listItem : items});
+  Item.find({},function(err, founditems){
+    console.log(founditems);
+    res.render("list",{title:"Today", listItem : founditems});
+  })
 })
 
 app.post("/", function(req,res){
