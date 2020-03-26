@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 // let items = [];
 // let workItems = [];    Using MongoDB instead.
 
-mongoose.connect("mongodb://localhost:27017/todoListDB");
+mongoose.connect("mongodb://localhost:27017/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
 const itemSchema = {
   name: String
 }
