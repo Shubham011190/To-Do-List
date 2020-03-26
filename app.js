@@ -80,6 +80,16 @@ app.post("/work", function(req,res){
   res.redirect("/work");
 })
 
+app.post("/delete", function(req,res){
+  const id = req.body.checkbox;
+  Item.findByIdAndRemove(id,function(err){
+    if(!err){
+      console.log("Item deleted successfully");
+      res.redirect("/");
+    }
+  })
+})
+
 app.listen(3000,function(req,res){
   console.log("Server started at port 3000");
 })
