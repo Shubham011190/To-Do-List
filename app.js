@@ -55,16 +55,19 @@ app.get("/",function(req,res){
 
 app.post("/", function(req,res){
   let item = req.body.inputval;
-  let choice = req.body.buttonVal;
-  // console.log(req.body);
-  if(choice == "Work"){
-    workItems.push(item);
-    res.redirect("/work");
-  }
-  else{
-    items.push(item);
+  // let choice = req.body.buttonVal;
+  // // console.log(req.body);
+  // if(choice == "Work"){
+  //   workItems.push(item);
+  //   res.redirect("/work");
+  // }
+  // else{
+  //   items.push(item);
+  const itemNew = new Item({
+    name:item
+  });
+  itemNew.save();
     res.redirect("/");
-  }
 })
 
 app.get("/work", function(req,res){
