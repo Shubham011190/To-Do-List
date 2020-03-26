@@ -30,20 +30,26 @@ const item3 = new Item({
 })
 
 const defItems =[item1, item2, item3];
-Item.insertMany(defItems, function(err){
-  if(err){
-    console.log(err);
-  }
-  else {
-    console.log("Default Items added successfully");
-  }
-})
+
 
 app.get("/",function(req,res){
   // let dayval = dateVal.datesend( );
   Item.find({},function(err, founditems){
-    console.log(founditems);
-    res.render("list",{title:"Today", listItem : founditems});
+    // console.log(founditems);
+    if(founditems.length ==0){
+      Item.insertMany(defItems, function(err){
+        if(err){
+          console.log(err);
+        }
+        else {
+          console.log("Default Items added successfully");
+        }
+      })
+      res.redirect("/");
+    }
+    else{
+      res.render("list",{title:"Today", listItem : founditems});
+    }
   })
 })
 
