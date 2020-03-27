@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 // let items = [];
 // let workItems = [];    Using MongoDB instead.
 
-mongoose.connect("mongodb://localhost:27017/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongodb.net/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
 const itemSchema = {
   name: String
 }
@@ -90,6 +90,6 @@ app.post("/delete", function(req,res){
   })
 })
 
-app.listen(3000,function(req,res){
+app.listen(process.env.PORT|| 3000,function(req,res){
   console.log("Server started at port 3000");
 })
