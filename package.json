@@ -8,8 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "engines" :{
-    "node":"12.15.0"
+  "engines": {
+    "node": "12.15.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
