@@ -11,11 +11,11 @@ app.set('view engine', 'ejs');
 // let workItems = [];    Using MongoDB instead.
 
 mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongodb.net/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
-const itemSchema = new Schema({
+var ItemSchema = new Schema({
   name: String
 });
 
-const Item = mongoose.model("Item",itemSchema);
+const Item = mongoose.model("Item",ItemSchema);
 
 const item1 = new Item({
   name : "Welcome to To-do List"
