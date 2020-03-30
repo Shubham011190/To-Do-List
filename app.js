@@ -48,6 +48,7 @@ app.get("/",function(req,res){
       res.redirect("/");
     }
     else{
+      console.log(founditems);
       res.render("list",{title:"Today", listItem : founditems});
     }
     // console.log(founditems);
