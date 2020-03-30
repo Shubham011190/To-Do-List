@@ -50,7 +50,7 @@ app.get("/",function(req,res){
     else{
       res.render("list",{title:"Today", listItem : founditems});
     }
-    console.log(founditems);
+    // console.log(founditems);
   })
 })
 
