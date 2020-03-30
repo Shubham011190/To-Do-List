@@ -28,7 +28,7 @@ const item2 = new Item({
 })
 
 const item3 = new Item({
-  name : "Press to delete"
+  name : "<-- Press to delete"
 })
 
 const defItems =[item1, item2, item3];
