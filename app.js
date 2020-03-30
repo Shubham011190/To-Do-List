@@ -7,7 +7,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-// let items = [];
+let items = [];
 // let workItems = [];    Using MongoDB instead.
 
 mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongodb.net/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
@@ -48,7 +48,6 @@ app.get("/",function(req,res){
       res.redirect("/");
     }
     else{
-      console.log(founditems);
       res.render("list",{title:"Today", listItem : founditems});
     }
     // console.log(founditems);
@@ -76,11 +75,11 @@ app.get("/work", function(req,res){
   res.render("list",{title:"Work List", listItem : workItems});
 })
 
-app.post("/work", function(req,res){
-  let item = req.body.inputval;
-  workItems.push(item);
-  res.redirect("/work");
-})
+// app.post("/work", function(req,res){
+//   let item = req.body.inputval;
+//   workItems.push(item);
+//   res.redirect("/work");
+// })
 
 app.post("/delete", function(req,res){
   const id = req.body.checkbox;
