@@ -14,7 +14,11 @@ mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongo
 
 var Schema = mongoose.Schema;
 var ItemSchema = new Schema({
-  name: String
+  name: String,
+  userid:{
+    type:String,
+    required:true
+  }
 });
 
 const Item = mongoose.model("Item",ItemSchema);
@@ -56,6 +60,7 @@ app.get("/",function(req,res){
 
 app.post("/", function(req,res){
   let item = req.body.inputval;
+  let useridd = req.body.userIn;
   // let choice = req.body.buttonVal;
   // // console.log(req.body);
   // if(choice == "Work"){
@@ -65,7 +70,8 @@ app.post("/", function(req,res){
   // else{
   //   items.push(item);
   const itemNew = new Item({
-    name:item
+    name:item,
+    userid:useridd
   });
   itemNew.save();
     res.redirect("/");
