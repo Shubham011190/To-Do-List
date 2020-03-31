@@ -40,7 +40,7 @@ const defItems =[item1, item2, item3];
 
 
 app.get("/",function(req,res){
-  Item.find({name:superUsername},function(err, founditems){
+  Item.find({},function(err, founditems){
     if(founditems.length ==0){
       Item.insertMany(defItems, function(err){
         if(err){
