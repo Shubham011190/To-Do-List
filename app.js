@@ -7,18 +7,16 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-let items = [];
+// let items = [];
 // let workItems = [];    Using MongoDB instead.
+let superUsername = "admin"
 
 mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongodb.net/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
 
 var Schema = mongoose.Schema;
 var ItemSchema = new Schema({
   name: String,
-  userid:{
-    type:String,
-    required:true
-  }
+  userid:String
 });
 
 const Item = mongoose.model("Item",ItemSchema);
@@ -39,7 +37,7 @@ const defItems =[item1, item2, item3];
 
 
 app.get("/",function(req,res){
-  Item.find({},function(err, founditems){
+  Item.find({name:superUsername},function(err, founditems){
     if(founditems.length ==0){
       Item.insertMany(defItems, function(err){
         if(err){
@@ -61,6 +59,7 @@ app.get("/",function(req,res){
 app.post("/", function(req,res){
   let item = req.body.inputval;
   let useridd = req.body.userIn;
+  superUsername = useridd;
   // let choice = req.body.buttonVal;
   // // console.log(req.body);
   // if(choice == "Work"){
