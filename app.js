@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 
 // let items = [];
 // let workItems = [];    Using MongoDB instead.
-let superUsername = "admin"
+let superUsername = ""
 
 mongoose.connect("mongodb+srv://admin-Shubham:imshubham1619@cluster0-yeunf.mongodb.net/todoListDB",{ useNewUrlParser: true, useUnifiedTopology: true  });
 
@@ -22,15 +22,18 @@ var ItemSchema = new Schema({
 const Item = mongoose.model("Item",ItemSchema);
 
 const item1 = new Item({
-  name : "Welcome to To-do List"
+  name : "Welcome to To-do List",
+  userid: ""
 })
 
 const item2 = new Item({
-  name : "Press '+' to add new items"
+  name : "Press '+' to add new items",
+  userid: ""
 })
 
 const item3 = new Item({
-  name : "<-- Press to delete"
+  name : "<-- Press to delete",
+  userid: ""
 })
 
 const defItems =[item1, item2, item3];
